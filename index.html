@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Figtree:wght@400;500;600;700&amp;display=swap">
+<script src="./image-slot.js"></script>
+<style>
+html,body{margin:0;background:#F3EEE4;color:#15241F;font-family:'Figtree',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1E5A55;text-decoration:none}
+a:hover{color:#C4552F}
+summary{list-style:none;cursor:pointer}
+summary::-webkit-details-marker{display:none}
+input,select{font:inherit}
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#F3EEE4">
+
+<!-- NAV -->
+<header style="position:sticky;top:0;z-index:20;background:rgba(243,238,228,0.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(21,36,31,0.1)">
+  <div style="max-width:1240px;margin:0 auto;padding:14px clamp(18px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+    <a href="#top" style="display:flex;align-items:baseline;gap:10px;color:#15241F;flex-shrink:0">
+      <span style="font-family:'Instrument Serif',serif;font-size:30px;letter-spacing:0.02em;line-height:1">HOMES WITH AIMS</span>
+      <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#4A5A55;white-space:nowrap">PropNex</span>
+    </a>
+    <nav style="display:flex;align-items:center;gap:clamp(14px,2.4vw,28px);flex-wrap:nowrap;font-size:15px;font-weight:500;flex:1 1 auto;min-width:0;justify-content:flex-end">
+      <div style="display:flex;flex-wrap:wrap;justify-content:flex-end;column-gap:clamp(14px,2.4vw,28px);height:22px;overflow:hidden;min-width:0;flex:1 1 auto">
+        <a href="#towns" style="color:#15241F;white-space:nowrap">Punggol &amp; Sengkang</a>
+        <a href="#services" style="color:#15241F;white-space:nowrap">Sell &amp; buy</a>
+        <a href="#about" style="color:#15241F;white-space:nowrap">About us</a>
+      </div>
+      <a href="#valuation" style="background:#15241F;color:#F3EEE4;padding:11px 18px;border-radius:999px;font-weight:600;white-space:nowrap;flex-shrink:0" style-hover="background:#C4552F;color:#fff">Free valuation</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" style="max-width:1240px;margin:0 auto;padding:clamp(40px,7vw,88px) clamp(18px,4vw,40px) clamp(48px,7vw,96px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(32px,5vw,64px);align-items:center">
+  <div style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#1E5A55">
+      <span style="width:28px;height:1px;background:#1E5A55"></span>Punggol · Sengkang specialists
+    </div>
+    <h1 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(46px,6.6vw,88px);line-height:0.98;letter-spacing:-0.015em;text-wrap:balance">Your Punggol or Sengkang home, in the <em style="color:#1E5A55">right hands.</em></h1>
+    <p style="margin:0;font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:#3A4A45;max-width:34em;text-wrap:pretty">We're Andik &amp; Mirta — a husband-and-wife team at PropNex who focus on just two towns. We know the blocks, the recent transactions and the buyers looking here, so your sale or purchase moves with fewer surprises.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="#valuation" style="background:#C4552F;color:#fff;padding:17px 26px;border-radius:999px;font-weight:600;font-size:16px;display:flex;align-items:center;gap:10px" style-hover="background:#A9441F;color:#fff">{{ primaryCta }} <span>→</span></a>
+      <a href="{{ waLink }}" target="_blank" style="border:1.5px solid #15241F;color:#15241F;padding:16px 24px;border-radius:999px;font-weight:600;font-size:16px" style-hover="background:#15241F;color:#F3EEE4">WhatsApp us</a>
+    </div>
+    <div style="display:flex;gap:28px;flex-wrap:wrap;padding-top:8px;border-top:1px solid rgba(21,36,31,0.12);font-size:14px;color:#4A5A55">
+      <div style="padding-top:16px;display:flex;flex-direction:column;gap:2px"><strong style="color:#15241F;font-size:15px">HDB · EC · Condo</strong>Resale, upgrading &amp; new launches</div>
+      <div style="padding-top:16px;display:flex;flex-direction:column;gap:2px"><strong style="color:#15241F;font-size:15px">Two agents, one team</strong>One of us always picks up</div>
+    </div>
+  </div>
+
+  <sc-if value="{{ heroIsForm }}" hint-placeholder-val="{{ false }}">
+    <div style="position:relative;display:flex;flex-direction:column;gap:0">
+      <div style="position:relative;height:clamp(240px,30vw,330px);border-radius:20px 20px 0 0;overflow:hidden">
+        <image-slot id="hero-couple-form" shape="rect" placeholder="Photo of Andik &amp; Mirta"></image-slot>
+      </div>
+      <div style="background:#15241F;color:#F3EEE4;border-radius:0 0 20px 20px;padding:26px;display:flex;flex-direction:column;gap:14px">
+        <div style="font-family:'Instrument Serif',serif;font-size:28px;line-height:1.1">What's your home worth today?</div>
+        <div style="font-size:15px;color:#BFCBC6">Tell us the block — we'll send recent comparable transactions within 24 hours.</div>
+        <a href="#valuation" style="background:#C4552F;color:#fff;padding:15px 20px;border-radius:12px;font-weight:600;text-align:center" style-hover="background:#A9441F;color:#fff">Start my free valuation →</a>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ heroIsPhoto }}" hint-placeholder-val="{{ true }}">
+    <div style="position:relative;height:clamp(380px,46vw,600px)">
+      <div style="position:absolute;inset:0 0 40px 40px;border-radius:220px 220px 20px 20px;overflow:hidden">
+        <image-slot id="hero-couple" shape="rect" placeholder="Photo of Andik &amp; Mirta — ideally at Punggol Waterway"></image-slot>
+      </div>
+      <div style="position:absolute;left:0;bottom:0;background:#FBF8F2;border-radius:16px;padding:18px 20px;box-shadow:0 18px 40px rgba(21,36,31,0.14);display:flex;flex-direction:column;gap:4px;max-width:260px">
+        <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#1E5A55;font-weight:600">Andik Imran &amp; Mirta Syazanna</div>
+        <div style="font-family:'Instrument Serif',serif;font-size:22px;line-height:1.15">Your Punggol &amp; Sengkang Specialists</div>
+      </div>
+    </div>
+  </sc-if>
+</section>
+
+<!-- WHY TWO TOWNS -->
+<section style="background:#15241F;color:#F3EEE4">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(18px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(28px,4vw,56px)">
+    <h2 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(36px,4.4vw,56px);line-height:1.04;text-wrap:balance">Why we only work two towns.</h2>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="font-family:'Instrument Serif',serif;font-size:44px;color:#E58A63;line-height:1">01</div>
+      <div style="font-size:19px;font-weight:600">Pricing to the block</div>
+      <p style="margin:0;font-size:16px;line-height:1.6;color:#BFCBC6">A unit facing the Waterway and one facing the LRT aren't the same. We price on floor, facing and stack — not town averages.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="font-family:'Instrument Serif',serif;font-size:44px;color:#E58A63;line-height:1">02</div>
+      <div style="font-size:19px;font-weight:600">Buyers already in hand</div>
+      <p style="margin:0;font-size:16px;line-height:1.6;color:#BFCBC6">Young families, upgraders and right-sizers who want the northeast come to us first — so your listing reaches serious buyers on day one.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="font-family:'Instrument Serif',serif;font-size:44px;color:#E58A63;line-height:1">03</div>
+      <div style="font-size:19px;font-weight:600">Timelines that line up</div>
+      <p style="margin:0;font-size:16px;line-height:1.6;color:#BFCBC6">Selling and buying at once? We plan the sequence, extension of stay and loan steps so you never have to move twice.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TOWNS -->
+<section id="towns" style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(18px,4vw,40px);display:flex;flex-direction:column;gap:36px">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+    <div style="display:flex;flex-direction:column;gap:14px;max-width:640px">
+      <div style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#1E5A55">Our neighbourhoods</div>
+      <h2 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(36px,4.4vw,56px);line-height:1.04;text-wrap:balance">Know the town before you commit to it.</h2>
+    </div>
+    <div style="display:flex;gap:6px;background:#E7E0D3;padding:6px;border-radius:999px">
+      <button onClick="{{ showPunggol }}" style="{{ tabPunggolStyle }}">Punggol</button>
+      <button onClick="{{ showSengkang }}" style="{{ tabSengkangStyle }}">Sengkang</button>
+    </div>
+  </div>
+
+  <sc-if value="{{ isPunggol }}" hint-placeholder-val="{{ true }}">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(24px,4vw,48px);align-items:stretch">
+      <div style="position:relative;min-height:380px;border-radius:20px;overflow:hidden">
+        <image-slot id="town-punggol" shape="rect" placeholder="Punggol — Waterway or Coney Island" src="https://commons.wikimedia.org/wiki/Special:FilePath/Punggol_Waterway_Park_2013.jpg?width=1600" credit="Photo: Erwin Soo, CC BY 2.0" credit-href="https://commons.wikimedia.org/wiki/File:Punggol_Waterway_Park_2013.jpg"></image-slot>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:22px;justify-content:center">
+        <h3 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(30px,3.2vw,42px);line-height:1.08">Punggol — the waterfront town that keeps growing.</h3>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:#3A4A45;text-wrap:pretty">Waterway living, park connectors to Coney Island, and the Punggol Digital District bringing jobs closer to home. A strong pull for young families and BTO upgraders.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:rgba(21,36,31,0.12);border:1px solid rgba(21,36,31,0.12);border-radius:14px;overflow:hidden">
+          <div style="background:#FBF8F2;padding:16px 18px;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#6A7873">Getting around</span><span style="font-weight:600">NEL, Punggol LRT, Punggol Coast MRT</span></div>
+          <div style="background:#FBF8F2;padding:16px 18px;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#6A7873">Everyday</span><span style="font-weight:600">Waterway Point, Oasis Terraces</span></div>
+          <div style="background:#FBF8F2;padding:16px 18px;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#6A7873">Outdoors</span><span style="font-weight:600">Waterway Park, Coney Island</span></div>
+          <div style="background:#FBF8F2;padding:16px 18px;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#6A7873">Areas we cover</span><span style="font-weight:600">Northshore, Matilda, Sumang, Waterway</span></div>
+        </div>
+        <a href="#valuation" style="font-weight:600;color:#C4552F" style-hover="color:#15241F">Get a Punggol valuation →</a>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isSengkang }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(24px,4vw,48px);align-items:stretch">
+      <div style="position:relative;min-height:380px;border-radius:20px;overflow:hidden">
+        <image-slot id="town-sengkang" shape="rect" placeholder="Sengkang — Riverside Park or Anchorvale" src="https://commons.wikimedia.org/wiki/Special:FilePath/Sengkang_East_Way.JPG?width=1600" credit="Photo: Terence Ong, CC BY 2.5" credit-href="https://commons.wikimedia.org/wiki/File:Sengkang_East_Way.JPG"></image-slot>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:22px;justify-content:center">
+        <h3 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(30px,3.2vw,42px);line-height:1.08">Sengkang — settled, central to the northeast, family-first.</h3>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:#3A4A45;text-wrap:pretty">Mature amenities, schools within walking distance and riverside greenery. Popular with families upgrading within the town and buyers who want space without leaving the northeast.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:rgba(21,36,31,0.12);border:1px solid rgba(21,36,31,0.12);border-radius:14px;overflow:hidden">
+          <div style="background:#FBF8F2;padding:16px 18px;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#6A7873">Getting around</span><span style="font-weight:600">NEL, Sengkang LRT, TPE &amp; KPE</span></div>
+          <div style="background:#FBF8F2;padding:16px 18px;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#6A7873">Everyday</span><span style="font-weight:600">Compass One, Sengkang Grand Mall</span></div>
+          <div style="background:#FBF8F2;padding:16px 18px;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#6A7873">Outdoors</span><span style="font-weight:600">Sengkang Riverside Park</span></div>
+          <div style="background:#FBF8F2;padding:16px 18px;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#6A7873">Areas we cover</span><span style="font-weight:600">Anchorvale, Compassvale, Fernvale, Rivervale</span></div>
+        </div>
+        <a href="#valuation" style="font-weight:600;color:#C4552F" style-hover="color:#15241F">Get a Sengkang valuation →</a>
+      </div>
+    </div>
+  </sc-if>
+</section>
+
+<!-- SOLD -->
+<section id="sold" style="max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,40px) clamp(56px,8vw,104px);display:flex;flex-direction:column;gap:36px">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+    <div style="display:flex;flex-direction:column;gap:14px;max-width:640px">
+      <div style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#1E5A55">Recently sold</div>
+      <h2 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(36px,4.4vw,56px);line-height:1.04;text-wrap:balance">Homes we've moved in Punggol &amp; Sengkang.</h2>
+    </div>
+    <a href="https://www.instagram.com/homeswithaims" target="_blank" style="font-weight:600;color:#C4552F" style-hover="color:#15241F">See more on Instagram →</a>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:20px">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden">
+        <image-slot id="sold-1" shape="rect" placeholder="Sold home photo"></image-slot>
+        <span style="position:absolute;top:12px;left:12px;background:#C4552F;color:#fff;font-size:12px;font-weight:700;letter-spacing:0.12em;padding:6px 10px;border-radius:6px;pointer-events:none">SOLD</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <span style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#1E5A55;font-weight:600">PUNGGOL · SUMANG</span>
+        <span style="font-size:19px;font-weight:600">Blk 325B Sumang Walk</span>
+        <span style="font-size:15px;color:#4A5A55">4-room HDB · 93 sqm</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden">
+        <image-slot id="sold-2" shape="rect" placeholder="Sold home photo"></image-slot>
+        <span style="position:absolute;top:12px;left:12px;background:#C4552F;color:#fff;font-size:12px;font-weight:700;letter-spacing:0.12em;padding:6px 10px;border-radius:6px;pointer-events:none">SOLD</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <span style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#1E5A55;font-weight:600">Punggol · Edgedale Plains</span>
+        <span style="font-size:19px;font-weight:600">Blk 120B Edgedale Plains</span>
+        <span style="font-size:15px;color:#4A5A55">4-room HDB · 93 sqm</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden">
+        <image-slot id="sold-3" shape="rect" placeholder="Sold home photo"></image-slot>
+        <span style="position:absolute;top:12px;left:12px;background:#C4552F;color:#fff;font-size:12px;font-weight:700;letter-spacing:0.12em;padding:6px 10px;border-radius:6px;pointer-events:none">SOLD</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <span style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#1E5A55;font-weight:600">Sengkang · Compassvale</span>
+        <span style="font-size:19px;font-weight:600">Blk 278C Compassvale Bow</span>
+        <span style="font-size:15px;color:#4A5A55">4-room HDB · 92 sqm</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden">
+        <image-slot id="sold-4" shape="rect" placeholder="Sold home photo"></image-slot>
+        <span style="position:absolute;top:12px;left:12px;background:#C4552F;color:#fff;font-size:12px;font-weight:700;letter-spacing:0.12em;padding:6px 10px;border-radius:6px;pointer-events:none">SOLD</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <span style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#1E5A55;font-weight:600">Punggol · Waterway</span>
+        <span style="font-size:19px;font-weight:600">Blk 665C Punggol Drive</span>
+        <span style="font-size:15px;color:#4A5A55">5-room HDB · 113 sqm</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden">
+        <image-slot id="sold-5" shape="rect" placeholder="Sold home photo"></image-slot>
+        <span style="position:absolute;top:12px;left:12px;background:#C4552F;color:#fff;font-size:12px;font-weight:700;letter-spacing:0.12em;padding:6px 10px;border-radius:6px;pointer-events:none">SOLD</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <span style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#1E5A55;font-weight:600">Sengkang · Rivervale</span>
+        <span style="font-size:19px;font-weight:600">Blk 126 Rivervale St</span>
+        <span style="font-size:15px;color:#4A5A55">5-room HDB · 120 sqm</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden">
+        <image-slot id="sold-6" shape="rect" placeholder="Sold home photo"></image-slot>
+        <span style="position:absolute;top:12px;left:12px;background:#C4552F;color:#fff;font-size:12px;font-weight:700;letter-spacing:0.12em;padding:6px 10px;border-radius:6px;pointer-events:none">SOLD</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <span style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#1E5A55;font-weight:600">Punggol · Edgedale Plains</span>
+        <span style="font-size:19px;font-weight:600">Blk 120B Edgedale Plains</span>
+        <span style="font-size:15px;color:#4A5A55">3-room HDB · 68 sqm</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:#FBF8F2;border-top:1px solid rgba(21,36,31,0.08);border-bottom:1px solid rgba(21,36,31,0.08)">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(18px,4vw,40px);display:flex;flex-direction:column;gap:44px">
+    <div style="display:flex;flex-direction:column;gap:14px;max-width:680px">
+      <div style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#1E5A55">How we help</div>
+      <h2 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(36px,4.4vw,56px);line-height:1.04;text-wrap:balance">Selling, buying, or both at once.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px">
+      <div style="background:#F3EEE4;border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'Instrument Serif',serif;font-size:30px;line-height:1.1">Sell</div>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#3A4A45">HDB resale, EC and condo. Block-level pricing, staging advice, professional photos and video, and negotiation through to completion.</p>
+      </div>
+      <div style="background:#F3EEE4;border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'Instrument Serif',serif;font-size:30px;line-height:1.1">Buy</div>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#3A4A45">Shortlists that match your budget, schools and commute — plus honest views on the blocks and stacks we'd avoid.</p>
+      </div>
+      <div style="background:#F3EEE4;border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'Instrument Serif',serif;font-size:30px;line-height:1.1">Upgrade or right-size</div>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#3A4A45">MOP reached? We map the numbers — CPF, loan, cash outlay — and time your sale and purchase together.</p>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:20px;padding-top:12px">
+      <div style="font-size:19px;font-weight:600">Selling with us, step by step</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:0;border-top:1.5px solid #15241F">
+        <div style="padding:20px 20px 0 0;display:flex;flex-direction:column;gap:8px"><span style="font-size:13px;font-weight:700;color:#C4552F">STEP 1</span><span style="font-weight:600;font-size:17px">Free valuation</span><span style="font-size:15px;line-height:1.55;color:#4A5A55">Recent comparables for your block and a realistic price range.</span></div>
+        <div style="padding:20px 20px 0 0;display:flex;flex-direction:column;gap:8px"><span style="font-size:13px;font-weight:700;color:#C4552F">STEP 2</span><span style="font-weight:600;font-size:17px">Plan &amp; prepare</span><span style="font-size:15px;line-height:1.55;color:#4A5A55">Pricing strategy, timeline and simple fixes that lift viewings.</span></div>
+        <div style="padding:20px 20px 0 0;display:flex;flex-direction:column;gap:8px"><span style="font-size:13px;font-weight:700;color:#C4552F">STEP 3</span><span style="font-weight:600;font-size:17px">Market &amp; view</span><span style="font-size:15px;line-height:1.55;color:#4A5A55">Listing, socials and our buyer list. We host every viewing.</span></div>
+        <div style="padding:20px 20px 0 0;display:flex;flex-direction:column;gap:8px"><span style="font-size:13px;font-weight:700;color:#C4552F">STEP 4</span><span style="font-weight:600;font-size:17px">Negotiate &amp; complete</span><span style="font-size:15px;line-height:1.55;color:#4A5A55">Offers, OTP, HDB or conveyancing — handled to key handover.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(18px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(32px,5vw,64px);align-items:center">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="position:relative;aspect-ratio:3/4;border-radius:16px;overflow:hidden"><image-slot id="about-andik" shape="rect" placeholder="Andik portrait"></image-slot></div>
+      <div style="font-weight:600">Andik Imran</div>
+      <div style="font-size:13px;color:#6A7873;margin-top:-6px">CEA Reg. R061801F</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;padding-top:48px">
+      <div style="position:relative;aspect-ratio:3/4;border-radius:16px;overflow:hidden"><image-slot id="about-mirta" shape="rect" placeholder="Mirta portrait"></image-slot></div>
+      <div style="font-weight:600">Mirta Syazanna</div>
+      <div style="font-size:13px;color:#6A7873;margin-top:-6px">CEA Reg. R070524E</div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:22px">
+    <div style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#1E5A55">Meet AIMS</div>
+    <h2 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(36px,4.4vw,56px);line-height:1.04;text-wrap:balance">A-I for Andik Imran. M-S for Mirta Syazanna.</h2>
+    <p style="margin:0;font-size:17px;line-height:1.65;color:#3A4A45;text-wrap:pretty">We're a husband-and-wife team with PropNex Singapore. Working as two means your calls get answered, viewings don't get rescheduled, and every decision gets a second pair of eyes.</p>
+    <p style="margin:0;font-size:17px;line-height:1.65;color:#3A4A45;text-wrap:pretty">We treat each move like it's our own family's — straight talk on price, clear timelines, and no pressure to rush.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="https://www.instagram.com/homeswithaims" target="_blank" style="border:1.5px solid #15241F;color:#15241F;padding:13px 20px;border-radius:999px;font-weight:600;font-size:15px" style-hover="background:#15241F;color:#F3EEE4">@homeswithaims on Instagram</a>
+      <a href="{{ waLink }}" target="_blank" style="color:#C4552F;padding:13px 4px;font-weight:600;font-size:15px" style-hover="color:#15241F">Chat on WhatsApp →</a>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" style="background:#FBF8F2;border-top:1px solid rgba(21,36,31,0.08)">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(18px,4vw,40px);display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;gap:14px;max-width:640px">
+        <div style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#1E5A55">Google reviews</div>
+        <h2 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(36px,4.4vw,56px);line-height:1.04;text-wrap:balance">What our clients say.</h2>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="{{ reviewsLink }}" target="_blank" style="background:#15241F;color:#F3EEE4;padding:14px 22px;border-radius:999px;font-weight:600;font-size:15px" style-hover="background:#C4552F;color:#fff">Read all reviews on Google →</a>
+        <a href="{{ reviewsLink }}" target="_blank" style="border:1.5px solid #15241F;color:#15241F;padding:13px 20px;border-radius:999px;font-weight:600;font-size:15px" style-hover="background:#15241F;color:#F3EEE4">Leave a review</a>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">
+      <a href="{{ reviewsLink }}" target="_blank" style="background:#F3EEE4;color:#15241F;border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:18px" style-hover="color:#15241F;background:#EDE6D9">
+        <div style="color:#E0A021;font-size:18px;letter-spacing:3px">★★★★★</div>
+        <p style="margin:0;font-family:'Instrument Serif',serif;font-size:23px;line-height:1.3;flex:1">“I would like to commend Imran for his exceptional service throughout the entire process! Your attention to detail, responsiveness and dedication made our experience smooth and stress-free!! We truly appreciate what you’ve done! Thank you for going above and beyond!”</p>
+        <div style="display:flex;flex-direction:column;gap:2px;font-size:14px"><strong style="font-size:15px">Diyana</strong><span style="color:#6A7873">Sold a 4-room · Punggol</span></div>
+      </a>
+      <a href="{{ reviewsLink }}" target="_blank" style="background:#F3EEE4;color:#15241F;border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:18px" style-hover="color:#15241F;background:#EDE6D9">
+        <div style="color:#E0A021;font-size:18px;letter-spacing:3px">★★★★★</div>
+        <p style="margin:0;font-family:'Instrument Serif',serif;font-size:23px;line-height:1.3;flex:1">“Andik was extremely helpful, open, transparent, and reliable through the whole process, he really cared about us, understood our needs and  was always available to answer our questions and to show us the apartment any time we asked for. Highly recommended and thank you!”</p>
+        <div style="display:flex;flex-direction:column;gap:2px;font-size:14px"><strong style="font-size:15px">Shina</strong><span style="color:#6A7873">Sold a 4-room · Punggol</span></div>
+      </a>
+      <a href="{{ reviewsLink }}" target="_blank" style="background:#F3EEE4;color:#15241F;border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:18px" style-hover="color:#15241F;background:#EDE6D9">
+        <div style="color:#E0A021;font-size:18px;letter-spacing:3px">★★★★★</div>
+        <p style="margin:0;font-family:'Instrument Serif',serif;font-size:23px;line-height:1.3;flex:1">“Alhamdulillah 1st of all thank you so much for Andik for the smooth transaction! Andik was effective in protecting my interests as his client. He was very responsive and able to convey everything well and accurately. I appreciate that Andik went out of his way to provide help and answers to any questions or confusions I had. I felt safe with him handling my real estate transaction. Andik is a highly recommended agent.”</p>
+        <div style="display:flex;flex-direction:column;gap:2px;font-size:14px"><strong style="font-size:15px">Nabil</strong><span style="color:#6A7873">Sold a 4-room · Punggol</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- VALUATION FORM -->
+<section id="valuation" style="background:#1E5A55;color:#F3EEE4">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(18px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(32px,5vw,64px);align-items:start">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#F2B79C">Free · No obligation</div>
+      <h2 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1.02;text-wrap:balance">Find out what your home could sell for.</h2>
+      <p style="margin:0;font-size:17px;line-height:1.6;color:#D3E0DC;max-width:30em">Share a few details and we'll WhatsApp you recent transactions for your block and a realistic price range — usually within 24 hours.</p>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:16px;color:#E8EFEC">
+        <div style="display:flex;gap:12px"><span style="color:#F2B79C">—</span>Block-level comparables, not town averages</div>
+        <div style="display:flex;gap:12px"><span style="color:#F2B79C">—</span>Your estimated cash and CPF proceeds</div>
+        <div style="display:flex;gap:12px"><span style="color:#F2B79C">—</span>No spam. We only contact you about your request.</div>
+      </div>
+    </div>
+
+    <div style="background:#FBF8F2;color:#15241F;border-radius:22px;padding:clamp(22px,3vw,34px);box-shadow:0 30px 60px rgba(0,0,0,0.18)">
+      <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-size:14px;font-weight:600">I'm looking to</span>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button onClick="{{ setSell }}" style="{{ intentSellStyle }}">Sell</button>
+              <button onClick="{{ setBuy }}" style="{{ intentBuyStyle }}">Buy</button>
+              <button onClick="{{ setBoth }}" style="{{ intentBothStyle }}">Sell &amp; buy</button>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:14px">
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600">Town
+              <select value="{{ form.town }}" onChange="{{ onTown }}" style="padding:14px;border:1.5px solid #D6CFC2;border-radius:12px;background:#fff;font-size:16px;color:#15241F">
+                <option value="Punggol">Punggol</option><option value="Sengkang">Sengkang</option><option value="Elsewhere">Elsewhere</option>
+              </select>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600">Property type
+              <select value="{{ form.type }}" onChange="{{ onType }}" style="padding:14px;border:1.5px solid #D6CFC2;border-radius:12px;background:#fff;font-size:16px;color:#15241F">
+                <option value="HDB 3-room">HDB 3-room</option><option value="HDB 4-room">HDB 4-room</option><option value="HDB 5-room">HDB 5-room</option><option value="HDB Executive">HDB Executive</option><option value="EC">EC</option><option value="Condo">Condo</option>
+              </select>
+            </label>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600">Block &amp; street <span style="font-weight:400;color:#6A7873;margin-top:-4px">optional for buyers</span>
+            <input value="{{ form.block }}" onChange="{{ onBlock }}" placeholder="e.g. 268C Punggol Field" style="padding:14px;border:1.5px solid #D6CFC2;border-radius:12px;background:#fff;font-size:16px;color:#15241F">
+          </label>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:14px">
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600">Name
+              <input value="{{ form.name }}" onChange="{{ onName }}" placeholder="Your name" style="padding:14px;border:1.5px solid #D6CFC2;border-radius:12px;background:#fff;font-size:16px;color:#15241F">
+            </label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600">Mobile
+              <input value="{{ form.phone }}" onChange="{{ onPhone }}" inputMode="tel" placeholder="8-digit SG number" style="padding:14px;border:1.5px solid #D6CFC2;border-radius:12px;background:#fff;font-size:16px;color:#15241F">
+            </label>
+          </div>
+          <sc-if value="{{ error }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:14px;color:#A9441F;font-weight:600">{{ error }}</div>
+          </sc-if>
+          <button onClick="{{ submit }}" style="background:#C4552F;color:#fff;border:none;padding:18px;border-radius:14px;font-weight:700;font-size:17px;cursor:pointer" style-hover="background:#A9441F">{{ submitLabel }}</button>
+          <div style="font-size:13px;color:#6A7873;line-height:1.5">By submitting, you agree to be contacted by Andik or Mirta about this request, in line with the PDPA.</div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:16px;padding:20px 0">
+          <div style="width:56px;height:56px;border-radius:50%;background:#1E5A55;color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px">✓</div>
+          <div style="font-family:'Instrument Serif',serif;font-size:36px;line-height:1.1">Thanks, {{ form.name }}.</div>
+          <p style="margin:0;font-size:17px;line-height:1.6;color:#3A4A45">We've got your request for {{ form.town }}. One of us will WhatsApp you on {{ form.phone }} within 24 hours.</p>
+          <a href="{{ waLink }}" target="_blank" style="align-self:flex-start;background:#15241F;color:#F3EEE4;padding:14px 22px;border-radius:999px;font-weight:600" style-hover="background:#C4552F;color:#fff">Can't wait? WhatsApp us now</a>
+          <button onClick="{{ reset }}" style="align-self:flex-start;background:none;border:none;padding:0;color:#6A7873;font-size:14px;text-decoration:underline;cursor:pointer">Submit another request</button>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="max-width:900px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(18px,4vw,40px);display:flex;flex-direction:column;gap:28px">
+  <h2 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(36px,4.4vw,52px);line-height:1.04">Questions we hear often</h2>
+  <div style="display:flex;flex-direction:column;border-top:1px solid rgba(21,36,31,0.18)">
+    <details style="border-bottom:1px solid rgba(21,36,31,0.18);padding:22px 0">
+      <summary style="display:flex;justify-content:space-between;gap:20px;font-size:19px;font-weight:600">My flat just reached MOP. Should I sell now? <span style="color:#C4552F">+</span></summary>
+      <p style="margin:14px 0 0;font-size:16px;line-height:1.65;color:#3A4A45">It depends on your next home, your loan and CPF position, and how many similar units are listed nearby. We'll run the numbers with you before you decide — no commitment.</p>
+    </details>
+    <details style="border-bottom:1px solid rgba(21,36,31,0.18);padding:22px 0">
+      <summary style="display:flex;justify-content:space-between;gap:20px;font-size:19px;font-weight:600">Can I sell and buy without moving out twice? <span style="color:#C4552F">+</span></summary>
+      <p style="margin:14px 0 0;font-size:16px;line-height:1.65;color:#3A4A45">Usually, yes. We sequence the sale and purchase, and where it fits, arrange an extension of stay so you move straight into your next home.</p>
+    </details>
+    <details style="border-bottom:1px solid rgba(21,36,31,0.18);padding:22px 0">
+      <summary style="display:flex;justify-content:space-between;gap:20px;font-size:19px;font-weight:600">How is your valuation worked out? <span style="color:#C4552F">+</span></summary>
+      <p style="margin:14px 0 0;font-size:16px;line-height:1.65;color:#3A4A45">We look at recent transactions in your block and neighbouring blocks, then adjust for floor, facing, condition and remaining lease — and explain each step.</p>
+    </details>
+    <details style="border-bottom:1px solid rgba(21,36,31,0.18);padding:22px 0">
+      <summary style="display:flex;justify-content:space-between;gap:20px;font-size:19px;font-weight:600">Do you work outside Punggol and Sengkang? <span style="color:#C4552F">+</span></summary>
+      <p style="margin:14px 0 0;font-size:16px;line-height:1.65;color:#3A4A45">These two towns are our focus, but if you're moving out of — or into — the northeast from elsewhere, we'll handle both ends.</p>
+    </details>
+  </div>
+</section>
+
+<!-- FINAL CTA + FOOTER -->
+<footer style="background:#15241F;color:#F3EEE4">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(18px,4vw,40px) 36px;display:flex;flex-direction:column;gap:48px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap">
+      <h2 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(40px,5.6vw,72px);line-height:1;max-width:12em;text-wrap:balance">Thinking about your next move in the northeast?</h2>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#valuation" style="background:#C4552F;color:#fff;padding:17px 26px;border-radius:999px;font-weight:600" style-hover="background:#A9441F;color:#fff">{{ primaryCta }}</a>
+        <a href="{{ waLink }}" target="_blank" style="border:1.5px solid #F3EEE4;color:#F3EEE4;padding:16px 24px;border-radius:999px;font-weight:600" style-hover="background:#F3EEE4;color:#15241F">WhatsApp us</a>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-top:28px;border-top:1px solid rgba(243,238,228,0.16);font-size:14px;color:#AEBBB6;line-height:1.6">
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <span style="font-family:'Instrument Serif',serif;font-size:26px;color:#F3EEE4">Homes with AIMS</span>
+        <span>Andik Imran (CEA R061801F) · Mirta Syazanna (CEA R070524E)</span>
+        <span>PropNex Realty Pte Ltd · CEA Licence L3008022J</span>
+      </div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-end">
+        <a href="https://www.instagram.com/homeswithaims" target="_blank" style="color:#F3EEE4" style-hover="color:#E58A63">Instagram</a>
+        <a href="{{ waLink }}" target="_blank" style="color:#F3EEE4" style-hover="color:#E58A63">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<sc-if value="{{ showSticky }}" hint-placeholder-val="{{ true }}">
+  <a href="{{ waLink }}" target="_blank" style="position:fixed;right:18px;bottom:18px;z-index:30;background:#25D366;color:#0B2B18;padding:14px 20px;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 12px 28px rgba(0,0,0,0.22);display:flex;align-items:center;gap:8px" style-hover="color:#0B2B18;background:#3BE07A">WhatsApp AIMS</a>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Photo&quot;,&quot;Valuation card&quot;],&quot;default&quot;:&quot;Photo&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;primaryCta&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Valuation&quot;,&quot;Consultation&quot;,&quot;Buyer shortlist&quot;],&quot;default&quot;:&quot;Valuation&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Conversion&quot;},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;6585685643&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Conversion&quot;},&quot;googleReviewsUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://g.page/r/CVdwLNGcngfqEAE/review&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Conversion&quot;},&quot;showStickyWhatsApp&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Conversion&quot;}}">
+class Component extends DCLogic {
+  state = { town: 'Punggol', intent: 'Sell', submitted: false, error: '',
+    form: { town: 'Punggol', type: 'HDB 4-room', block: '', name: '', phone: '' } };
+
+  set = (k) => (e) => { const v = e.target.value; this.setState(s => ({ form: { ...s.form, [k]: v }, error: '' })); };
+
+  submit = () => {
+    const { name, phone } = this.state.form;
+    const digits = phone.replace(/\D/g, '').replace(/^65/, '');
+    if (!name.trim()) return this.setState({ error: 'Please add your name.' });
+    if (!/^[89]\d{7}$/.test(digits)) return this.setState({ error: 'Please enter a valid 8-digit Singapore mobile number.' });
+    if (this.state.sending) return;
+    const f = this.state.form;
+    this.setState({ sending: true, error: '' });
+    fetch('https://formsubmit.co/ajax/m.syazanna@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        _subject: `New ${this.state.intent} enquiry — ${f.town} ${f.type} (${f.name})`,
+        _template: 'table', _captcha: 'false',
+        'Looking to': this.state.intent, Town: f.town, 'Property type': f.type,
+        'Block & street': f.block || '—', Name: f.name, Mobile: digits,
+        'Submitted from': location.href,
+      }),
+    }).then(r => r.json()).then(res => {
+      if (res && (res.success === true || res.success === 'true')) this.setState({ submitted: true, sending: false });
+      else throw new Error(res && res.message);
+    }).catch(() => this.setState({ sending: false, error: "Sorry, that didn't go through. Please try again or WhatsApp us directly." }));
+  };
+
+  pill(active, dark) {
+    return { border: 'none', cursor: 'pointer', padding: dark ? '12px 18px' : '11px 22px', borderRadius: 999, fontSize: 15, fontWeight: 600, fontFamily: 'inherit',
+      background: active ? '#15241F' : (dark ? '#F3EEE4' : 'transparent'), color: active ? '#F3EEE4' : '#15241F',
+      boxShadow: dark && !active ? 'inset 0 0 0 1.5px #D6CFC2' : 'none' };
+  }
+
+  renderVals() {
+    const p = this.props, s = this.state;
+    const num = String(p.whatsappNumber ?? '6590000000').replace(/\D/g, '');
+    const msg = encodeURIComponent("Hi Andik & Mirta, I'm interested in a Punggol/Sengkang home.");
+    const ctaMap = { 'Valuation': 'Get a free valuation', 'Consultation': 'Book a free consult', 'Buyer shortlist': 'Get my home shortlist' };
+    const hero = p.heroVariant ?? 'Photo';
+    return {
+      waLink: `https://wa.me/${num}?text=${msg}`,
+      reviewsLink: p.googleReviewsUrl || 'https://www.google.com/search?q=Homes+with+AIMS+PropNex+reviews',
+      primaryCta: ctaMap[p.primaryCta ?? 'Valuation'],
+      heroIsPhoto: hero === 'Photo', heroIsForm: hero === 'Valuation card',
+      showSticky: p.showStickyWhatsApp ?? true,
+      isPunggol: s.town === 'Punggol', isSengkang: s.town === 'Sengkang',
+      showPunggol: () => this.setState({ town: 'Punggol' }), showSengkang: () => this.setState({ town: 'Sengkang' }),
+      tabPunggolStyle: this.pill(s.town === 'Punggol'), tabSengkangStyle: this.pill(s.town === 'Sengkang'),
+      intentSellStyle: this.pill(s.intent === 'Sell', true), intentBuyStyle: this.pill(s.intent === 'Buy', true), intentBothStyle: this.pill(s.intent === 'Both', true),
+      setSell: () => this.setState({ intent: 'Sell' }), setBuy: () => this.setState({ intent: 'Buy' }), setBoth: () => this.setState({ intent: 'Both' }),
+      form: s.form, onTown: this.set('town'), onType: this.set('type'), onBlock: this.set('block'), onName: this.set('name'), onPhone: this.set('phone'),
+      error: s.error, submit: this.submit, submitLabel: s.sending ? 'Sending…' : 'Get my free valuation', submitted: s.submitted, notSubmitted: !s.submitted,
+      reset: () => this.setState({ submitted: false, form: { ...s.form, block: '', name: '', phone: '' } }),
+    };
+  }
+}
+</script>
+</body>
+</html>
